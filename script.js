@@ -10,7 +10,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 async function pontianakPolygon() {
   // Fetch Data dengan Vanila Js, dengan penggabungan Url, dari base url menuju File yang dituju
-  const response = await fetch(`${best_url}/geojson/pontianak.geojson`);
+  const response = await fetch(`${best_url}/geojson/bengkayang.geojson`);
   // membuat constan untung mengambil file json to geo json
   const data = await response.json();
   // Mensefesifikan const data pada feauture nya karna, Data Geojson berbentuk feautures collection
@@ -34,7 +34,7 @@ async function pontianakPolygon() {
 }
 
 async function kuburayaPolygon() {
-  const response = await fetch(`${best_url}/geojson/kuburaya.geojson`);
+  const response = await fetch(`${best_url}/geojson/sambas.geojson`);
   const data = await response.json();
   let res = data.features[0];
   console.log(res);
