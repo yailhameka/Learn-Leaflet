@@ -1,11 +1,11 @@
 // Best_url
-let best_url = "http://localhost/ilham";
+let best_url = 'http://localhost/learn-leaflet';
 // Constan Map
-const map = L.map("map").setView({ lat: -0.085497, lon: 109.31773 }, 7);
+const map = L.map('map').setView({ lat: -0.085497, lon: 109.31773 }, 7);
 // Url Openstrrer and max zoom
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
-  attribution: "© OpenStreetMap",
+  attribution: '© OpenStreetMap',
 }).addTo(map);
 
 async function pontianakPolygon() {
@@ -22,7 +22,7 @@ async function pontianakPolygon() {
     //   Merubah style dengan parameter feauture
     style: function (feature) {
       // mengembalikan warna
-      return { color: "#ff0000" };
+      return { color: '#ff0000' };
     },
     // menggunakan onEachfutre(seperti onclick) dan menerima L dan feauture sebagai parameter
     onEachFeature: function (feature, l) {
@@ -33,5 +33,21 @@ async function pontianakPolygon() {
   }).addTo(map);
 }
 
+async function kuburayaPolygon() {
+  const response = await fetch(`${best_url}/geojson/kuburaya.geojson`);
+  const data = await response.json();
+  let res = data.features[0];
+  console.log(res);
+  L.geoJSON(res, {
+    style: function (feature) {
+      return { color: 'blue' };
+    },
+    onEachFeature: function (feature, l) {
+      l.bindPopup(`ini adalah kota : ${res.properties.Kabupaten}`);
+    },
+  }).addTo(map);
+}
+
 // Memanggil polyonPontianak
 pontianakPolygon();
+kuburayaPolygon();
