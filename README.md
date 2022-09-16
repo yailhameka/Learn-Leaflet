@@ -1,5 +1,5 @@
 # Learn-Leaflet
-1. learn Fetch, ad using async fun(promise)
+learn Fetch, ad using async fun(promise)
 lets go to build ur note plan in here:
 1. ........
 2. ........
